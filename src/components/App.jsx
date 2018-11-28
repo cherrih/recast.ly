@@ -1,7 +1,6 @@
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from '../components/VideoList.js';
 import VideoPlayer from '../components/VideoPlayer.js';
-import searchYouTube from '../lib/searchYouTube.js';
 import YOUTUBE_API_KEY from '../config/youtube.js';
 
 class App extends React.Component {
@@ -20,9 +19,9 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    searchYouTube({key: YOUTUBE_API_KEY, query: 'elephant', max: 5}, (videos)=>{
+    this.props.searchYouTube({key: YOUTUBE_API_KEY, query: 'elephant', max: 6}, (videos)=>{
       this.setState({
-        videoList:videos,
+        videoList: videos,
         currentVideo: videos[0] 
       }); 
     });
