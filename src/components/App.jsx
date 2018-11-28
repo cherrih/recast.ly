@@ -2,24 +2,7 @@ import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from '../components/VideoList.js';
 import VideoPlayer from '../components/VideoPlayer.js';
 import searchYouTube from '../lib/searchYouTube.js';
-
-// var App = () => (
-//   <div>
-//     <nav className="navbar">
-//       <div className="col-md-6 offset-md-3">
-//         <div><h5><em>search</em> view goes here</h5></div>
-//       </div>
-//     </nav>
-//     <div className="row">
-//       <div className="col-md-7">
-//         <VideoPlayer video={exampleVideoData[0]}/>
-//       </div>
-//       <div className="col-md-5">
-//         <VideoList videos={exampleVideoData}/>
-//       </div>
-//     </div>
-//   </div>
-// );
+import YOUTUBE_API_KEY from '../config/youtube.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -37,6 +20,12 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    searchYouTube({key: YOUTUBE_API_KEY, query: 'elephant', max: 5}, (videos)=>{
+      this.setState({
+        videoList:videos,
+        currentVideo: videos[0] 
+      }); 
+    });
     
   }
   
