@@ -1,6 +1,7 @@
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from '../components/VideoList.js';
 import VideoPlayer from '../components/VideoPlayer.js';
+import searchYouTube from '../lib/searchYouTube.js';
 
 // var App = () => (
 //   <div>
@@ -33,6 +34,10 @@ class App extends React.Component {
     this.setState({
       currentVideo: selectedVideo
     });
+  }
+  
+  componentDidMount() {
+    
   }
   
   render() {
