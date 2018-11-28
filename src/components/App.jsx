@@ -43,7 +43,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search value={this.state.value} onChange={this.onTypeHandler.bind(this)}/>
+            <Search value={this.state.value} onChange={_.debounce(this.onTypeHandler.bind(this), 500)}/>
           </div>
         </nav>
         <div className="row">
